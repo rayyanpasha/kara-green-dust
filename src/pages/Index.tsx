@@ -1,55 +1,67 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, MapPin, ShoppingBag, TrendingUp, Heart } from 'lucide-react';
-import Hero from '@/components/Hero';
-import AQIDisplay from '@/components/AQIDisplay';
-import HotspotMap from '@/components/HotspotMap';
+import ImmersiveHero from '@/components/ImmersiveHero';
+import EnhancedAQI from '@/components/EnhancedAQI';
+import EnhancedHotspotMap from '@/components/EnhancedHotspotMap';
 import CivicComplaints from '@/components/CivicComplaints';
 import MossFrameStore from '@/components/MossFrameStore';
 import ImpactDashboard from '@/components/ImpactDashboard';
+import { MapPin, ShoppingBag, Sparkles, Wind } from 'lucide-react';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <Hero />
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Immersive 3D Hero */}
+      <ImmersiveHero />
       
-      {/* AQI & Health Tips */}
-      <AQIDisplay />
+      {/* Enhanced AQI with Motion */}
+      <EnhancedAQI />
       
-      {/* Interactive Hotspot Map */}
-      <HotspotMap />
+      {/* Interactive 3D Hotspot Map */}
+      <EnhancedHotspotMap />
       
-      {/* Civic Complaints Board */}
-      <CivicComplaints />
+      {/* Streamlined Sections with Glass Design */}
+      <div className="relative">
+        {/* Civic Complaints - Enhanced */}
+        <section className="py-16 glass-card mx-6 my-8 rounded-3xl border-0">
+          <CivicComplaints />
+        </section>
+        
+        {/* Moss Frame Marketplace - Premium */}
+        <section className="py-16 bg-gradient-to-br from-secondary/5 to-primary/10">
+          <MossFrameStore />
+        </section>
+        
+        {/* Impact Dashboard - Gamified */}
+        <ImpactDashboard />
+      </div>
       
-      {/* Moss Frame Marketplace */}
-      <MossFrameStore />
-      
-      {/* Impact Dashboard */}
-      <ImpactDashboard />
-      
-      {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-12 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Make a Difference? 🌱</h2>
-          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-            Join thousands of Indian teenagers transforming dust pollution into living solutions. 
-            Every action counts toward cleaner cities.
+      {/* Premium Footer */}
+      <footer className="relative py-20 px-6 overflow-hidden">
+        <div className="absolute inset-0 hero-gradient opacity-90" />
+        <div className="absolute inset-0 mesh-gradient opacity-40" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Ready to Transform Your City? ✨
+          </h2>
+          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+            Join thousands creating cleaner air through community action and living solutions.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="hero" size="xl">
+          <div className="flex flex-wrap justify-center gap-6">
+            <Button variant="hero" size="xl" className="glass-button">
               <MapPin className="w-5 h-5" />
               Start Reporting
+              <Sparkles className="w-4 h-4 ml-2" />
             </Button>
-            <Button variant="action" size="xl">
+            <Button variant="action" size="xl" className="glass-button">
               <ShoppingBag className="w-5 h-5" />
-              Shop Now
+              Shop Moss Frames
+              <Wind className="w-4 h-4 ml-2" />
             </Button>
           </div>
-          <div className="mt-8 pt-8 border-t border-primary-foreground/20 text-sm opacity-75">
-            <p>© 2024 Kara Environmental Movement. Building cleaner cities, one community at a time.</p>
+          <div className="mt-12 pt-8 border-t border-white/20 text-white/75">
+            <p>© 2024 Kara Environmental Movement • Transforming Pollution into Living Solutions</p>
           </div>
         </div>
       </footer>

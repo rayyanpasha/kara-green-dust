@@ -50,17 +50,23 @@
     --ring: 156 48% 35%;
     --radius: 0.75rem;
 
-    /* Beautiful Gradients for Environmental Theme */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
-    --gradient-earth: linear-gradient(180deg, hsl(var(--secondary-light)) 0%, hsl(var(--primary)) 100%);
-    --gradient-sky: linear-gradient(180deg, hsl(108 65% 85%) 0%, hsl(var(--secondary)) 100%);
-    --gradient-action: linear-gradient(45deg, hsl(var(--accent)) 0%, hsl(var(--accent-light)) 100%);
+    /* Premium Organic Gradients */
+    --gradient-hero: radial-gradient(ellipse at 30% 20%, hsl(var(--secondary-light)) 0%, hsl(var(--primary)) 30%, hsl(var(--accent)) 70%);
+    --gradient-earth: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--primary-glow)) 40%, hsl(var(--accent-light)) 100%);
+    --gradient-sky: linear-gradient(180deg, hsl(108 65% 90%) 0%, hsl(var(--secondary-light)) 50%, hsl(var(--primary)) 100%);
+    --gradient-action: conic-gradient(from 45deg, hsl(var(--accent)) 0%, hsl(var(--accent-light)) 50%, hsl(var(--secondary)) 100%);
+    --gradient-glass-primary: linear-gradient(135deg, hsla(var(--primary), 0.15) 0%, hsla(var(--secondary), 0.25) 100%);
+    --gradient-glass-secondary: linear-gradient(135deg, hsla(var(--background), 0.8) 0%, hsla(var(--background), 0.4) 100%);
+    --gradient-mesh: radial-gradient(circle at 20% 80%, hsla(var(--accent), 0.3) 0%, transparent 50%), 
+                     radial-gradient(circle at 80% 20%, hsla(var(--secondary), 0.3) 0%, transparent 50%),
+                     radial-gradient(circle at 40% 40%, hsla(var(--primary-glow), 0.2) 0%, transparent 50%);
     
-    /* Elegant Shadows */
-    --shadow-soft: 0 4px 6px -1px hsl(var(--primary) / 0.1);
-    --shadow-medium: 0 10px 15px -3px hsl(var(--primary) / 0.1), 0 4px 6px -2px hsl(var(--primary) / 0.05);
-    --shadow-large: 0 20px 25px -5px hsl(var(--primary) / 0.15), 0 10px 10px -5px hsl(var(--primary) / 0.1);
-    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+    /* Premium Glass Shadows */
+    --shadow-glass: 0 8px 32px hsla(var(--primary), 0.12), 0 4px 16px hsla(var(--primary), 0.08);
+    --shadow-glass-hover: 0 16px 64px hsla(var(--primary), 0.2), 0 8px 32px hsla(var(--secondary), 0.15);
+    --shadow-elevated: 0 25px 50px -12px hsla(var(--primary), 0.25), 0 12px 24px -8px hsla(var(--secondary), 0.15);
+    --shadow-glow-primary: 0 0 60px hsla(var(--primary-glow), 0.4);
+    --shadow-glow-accent: 0 0 40px hsla(var(--accent), 0.3);
 
     /* Smooth Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -137,7 +143,7 @@
 }
 
 @layer components {
-  /* Hero Section Styles */
+  /* Premium Gradient Backgrounds */
   .hero-gradient {
     background: var(--gradient-hero);
   }
@@ -153,18 +159,74 @@
   .action-gradient {
     background: var(--gradient-action);
   }
+  
+  .mesh-gradient {
+    background: var(--gradient-mesh);
+  }
 
-  /* Interactive Elements */
+  /* Glassmorphism Components */
+  .glass-card {
+    background: var(--gradient-glass-primary);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsla(var(--primary), 0.2);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .glass-panel {
+    background: var(--gradient-glass-secondary);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsla(var(--background), 0.3);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-button {
+    background: hsla(var(--background), 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsla(var(--primary), 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-button:hover {
+    background: hsla(var(--primary), 0.1);
+    box-shadow: var(--shadow-glass-hover);
+    transform: translateY(-2px);
+  }
+
+  /* Premium Interactive Elements */
   .hover-lift {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-elevated);
   }
   
   .hover-glow {
-    @apply transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary-glow)/0.4)];
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow-primary);
+    transform: scale(1.05);
   }
   
   .pulse-eco {
-    animation: pulse-eco 2s infinite;
+    animation: pulse-eco 3s ease-in-out infinite;
+  }
+
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  .morph-on-hover {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .morph-on-hover:hover {
+    border-radius: 2rem;
+    background: var(--gradient-glass-primary);
+    backdrop-filter: blur(20px);
   }
 
   /* Scroll Animations */
@@ -191,6 +253,18 @@
   
   .map-pin.low-priority {
     @apply bg-success;
+  }
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
   }
 }
 
