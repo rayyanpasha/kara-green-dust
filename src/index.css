@@ -2,41 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Kara Environmental Platform Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Brand Colors - Environmental & Youth-Focused */
+    --background: 120 20% 98%;
+    --foreground: 156 24% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 120 30% 99%;
+    --card-foreground: 156 24% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 120 30% 99%;
+    --popover-foreground: 156 24% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Deep Forest Green - Trust & Environmental Focus */
+    --primary: 156 48% 24%;
+    --primary-foreground: 120 30% 98%;
+    --primary-light: 156 48% 35%;
+    --primary-glow: 156 60% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary: Vibrant Moss Green - Growth & Youth Energy */
+    --secondary: 108 65% 35%;
+    --secondary-foreground: 120 30% 98%;
+    --secondary-light: 108 65% 45%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent: Warm Amber - Action & Urgency */
+    --accent: 35 85% 55%;
+    --accent-foreground: 120 30% 98%;
+    --accent-light: 35 85% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted & Supporting Colors */
+    --muted: 120 20% 94%;
+    --muted-foreground: 156 16% 46%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 142 70% 45%;
+    --success-foreground: 120 30% 98%;
+    --warning: 35 85% 55%;
+    --warning-foreground: 120 30% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 120 30% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* UI Elements */
+    --border: 120 20% 88%;
+    --input: 120 20% 95%;
+    --ring: 156 48% 35%;
+    --radius: 0.75rem;
 
-    --radius: 0.5rem;
+    /* Beautiful Gradients for Environmental Theme */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-earth: linear-gradient(180deg, hsl(var(--secondary-light)) 0%, hsl(var(--primary)) 100%);
+    --gradient-sky: linear-gradient(180deg, hsl(108 65% 85%) 0%, hsl(var(--secondary)) 100%);
+    --gradient-action: linear-gradient(45deg, hsl(var(--accent)) 0%, hsl(var(--accent-light)) 100%);
+    
+    /* Elegant Shadows */
+    --shadow-soft: 0 4px 6px -1px hsl(var(--primary) / 0.1);
+    --shadow-medium: 0 10px 15px -3px hsl(var(--primary) / 0.1), 0 4px 6px -2px hsl(var(--primary) / 0.05);
+    --shadow-large: 0 20px 25px -5px hsl(var(--primary) / 0.15), 0 10px 10px -5px hsl(var(--primary) / 0.1);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+
+    /* Smooth Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +128,99 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .earth-gradient {
+    background: var(--gradient-earth);
+  }
+  
+  .sky-gradient {
+    background: var(--gradient-sky);
+  }
+  
+  .action-gradient {
+    background: var(--gradient-action);
+  }
+
+  /* Interactive Elements */
+  .hover-lift {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary-glow)/0.4)];
+  }
+  
+  .pulse-eco {
+    animation: pulse-eco 2s infinite;
+  }
+
+  /* Scroll Animations */
+  .fade-up {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+  
+  .fade-up.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Map Styles */
+  .map-pin {
+    @apply w-6 h-6 rounded-full shadow-lg transform transition-transform duration-200 hover:scale-125;
+  }
+  
+  .map-pin.high-priority {
+    @apply bg-destructive animate-pulse;
+  }
+  
+  .map-pin.medium-priority {
+    @apply bg-warning;
+  }
+  
+  .map-pin.low-priority {
+    @apply bg-success;
+  }
+}
+
+@keyframes pulse-eco {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
