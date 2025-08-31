@@ -10,15 +10,47 @@ import ImpactDashboard from '@/components/ImpactDashboard';
 import PersistentEarth from '@/components/PersistentEarth';
 import SmoothScrollContainer from '@/components/SmoothScrollContainer';
 import InteractiveSection from '@/components/InteractiveSection';
+import Navigation from '@/components/Navigation';
+import OnboardingTour from '@/components/OnboardingTour';
+import FAQ from '@/components/FAQ';
+import Newsletter from '@/components/Newsletter';
+import SearchOverlay from '@/components/SearchOverlay';
 import { MapPin, ShoppingBag, Sparkles, Wind } from 'lucide-react';
 import dustToMossImage from '@/assets/dust-to-moss-transformation.jpg';
 import bengaluruCommunityImage from '@/assets/bengaluru-community-action.jpg';
 import hotspotVisualizationImage from '@/assets/interactive-hotspot-visualization.jpg';
 
 const Index = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  // Handle search keyboard shortcut
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <SmoothScrollContainer>
       <div className="min-h-screen relative">
+        {/* Navigation */}
+        <Navigation onSearchOpen={() => setIsSearchOpen(true)} />
+        
+        {/* Search Overlay */}
+        <SearchOverlay 
+          isOpen={isSearchOpen} 
+          onClose={() => setIsSearchOpen(false)} 
+        />
+        
+        {/* Onboarding Tour */}
+        <OnboardingTour />
+        
         {/* Persistent 3D Earth */}
         <PersistentEarth />
         
@@ -64,9 +96,14 @@ const Index = () => {
             <MossFrameStore />
           </InteractiveSection>
           
-          {/* Impact Dashboard - Gamified */}
+          {/* FAQ Section */}
+          <InteractiveSection parallaxIntensity={0.1}>
+            <FAQ />
+          </InteractiveSection>
+          
+          {/* Newsletter Signup */}
           <InteractiveSection parallaxIntensity={0.2}>
-            <ImpactDashboard />
+            <Newsletter />
           </InteractiveSection>
         </div>
         
