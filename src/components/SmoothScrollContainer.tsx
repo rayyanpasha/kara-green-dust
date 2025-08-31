@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 interface SmoothScrollContainerProps {
@@ -6,7 +5,6 @@ interface SmoothScrollContainerProps {
 }
 
 const SmoothScrollContainer = ({ children }: SmoothScrollContainerProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   
   // Apple-style smooth scroll physics
@@ -20,31 +18,9 @@ const SmoothScrollContainer = ({ children }: SmoothScrollContainerProps) => {
   const backgroundY = useTransform(smoothProgress, [0, 1], ['0%', '50%']);
   const backgroundOpacity = useTransform(smoothProgress, [0, 0.5, 1], [1, 0.8, 0.6]);
 
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      
-      const container = containerRef.current;
-      if (!container) return;
-
-      // Smooth scroll implementation
-      container.scrollBy({
-        top: e.deltaY * 0.8, // Reduce scroll speed for smoothness
-        behavior: 'smooth'
-      });
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('wheel', handleWheel, { passive: false });
-      return () => container.removeEventListener('wheel', handleWheel);
-    }
-  }, []);
-
   return (
     <div 
-      ref={containerRef}
-      className="relative overflow-x-hidden"
+      className="relative"
       style={{ 
         scrollBehavior: 'smooth',
         WebkitOverflowScrolling: 'touch'
