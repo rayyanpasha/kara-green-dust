@@ -8,41 +8,74 @@ import CivicComplaints from '@/components/CivicComplaints';
 import MossFrameStore from '@/components/MossFrameStore';
 import ImpactDashboard from '@/components/ImpactDashboard';
 import PersistentEarth from '@/components/PersistentEarth';
+import SmoothScrollContainer from '@/components/SmoothScrollContainer';
+import InteractiveSection from '@/components/InteractiveSection';
 import { MapPin, ShoppingBag, Sparkles, Wind } from 'lucide-react';
+import dustToMossImage from '@/assets/dust-to-moss-transformation.jpg';
+import bengaluruCommunityImage from '@/assets/bengaluru-community-action.jpg';
+import hotspotVisualizationImage from '@/assets/interactive-hotspot-visualization.jpg';
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Persistent 3D Earth */}
-      <PersistentEarth />
-      
-      {/* Immersive 3D Hero */}
-      <ImmersiveHero />
-      
-      {/* Enhanced AQI with Motion */}
-      <EnhancedAQI />
-      
-      {/* Interactive 3D Hotspot Map */}
-      <EnhancedHotspotMap />
-      
-      {/* Streamlined Sections with Glass Design */}
-      <div className="relative">
-        {/* Civic Complaints - Enhanced */}
-        <section className="py-16 glass-card mx-6 my-8 rounded-3xl border-0">
-          <CivicComplaints />
-        </section>
+    <SmoothScrollContainer>
+      <div className="min-h-screen relative">
+        {/* Persistent 3D Earth */}
+        <PersistentEarth />
         
-        {/* Moss Frame Marketplace - Premium */}
-        <section className="py-16 bg-gradient-to-br from-secondary/5 to-primary/10">
-          <MossFrameStore />
-        </section>
+        {/* Immersive 3D Hero */}
+        <ImmersiveHero />
         
-        {/* Impact Dashboard - Gamified */}
-        <ImpactDashboard />
-      </div>
-      
-      {/* Premium Footer */}
-      <footer className="relative py-20 px-6 overflow-hidden">
+        {/* Enhanced AQI with Motion */}
+        <InteractiveSection 
+          backgroundImage={dustToMossImage}
+          parallaxIntensity={0.3}
+          className="py-0"
+        >
+          <EnhancedAQI />
+        </InteractiveSection>
+        
+        {/* Interactive 3D Hotspot Map */}
+        <InteractiveSection 
+          backgroundImage={hotspotVisualizationImage}
+          parallaxIntensity={0.4}
+          className="py-0"
+        >
+          <EnhancedHotspotMap />
+        </InteractiveSection>
+        
+        {/* Streamlined Sections with Glass Design */}
+        <div className="relative">
+          {/* Civic Complaints - Enhanced */}
+          <InteractiveSection 
+            backgroundImage={bengaluruCommunityImage}
+            parallaxIntensity={0.2}
+            className="py-16 mx-6 my-8"
+          >
+            <div className="glass-card rounded-3xl border-0 p-8">
+              <CivicComplaints />
+            </div>
+          </InteractiveSection>
+          
+          {/* Moss Frame Marketplace - Premium */}
+          <InteractiveSection 
+            className="py-16 bg-gradient-to-br from-secondary/5 to-primary/10"
+            parallaxIntensity={0.3}
+          >
+            <MossFrameStore />
+          </InteractiveSection>
+          
+          {/* Impact Dashboard - Gamified */}
+          <InteractiveSection parallaxIntensity={0.2}>
+            <ImpactDashboard />
+          </InteractiveSection>
+        </div>
+        
+        {/* Premium Footer */}
+        <InteractiveSection 
+          className="py-20 px-6 overflow-hidden"
+          parallaxIntensity={0.1}
+        >
+          <footer className="relative">
         <div className="absolute inset-0 hero-gradient opacity-90" />
         <div className="absolute inset-0 mesh-gradient opacity-40" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -68,10 +101,12 @@ const Index = () => {
             <p>© 2024 Kara Environmental Movement • Bengaluru, India</p>
             <p className="text-sm mt-2">Created by Rayyan Pasha & Kanishka Raghavendra</p>
             <p className="text-xs mt-1 opacity-60">Transforming Pollution into Living Solutions</p>
+            </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+        </InteractiveSection>
+      </div>
+    </SmoothScrollContainer>
   );
 };
 

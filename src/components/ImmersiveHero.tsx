@@ -84,15 +84,12 @@ const ImmersiveHero = () => {
       ref={containerRef}
       className="relative min-h-screen overflow-hidden"
     >
-      {/* 3D Background */}
+      {/* Background gradients only - Earth is now persistent */}
       <motion.div
         style={{ y, scale }}
         className="absolute inset-0 z-0"
       >
-        <Scene3D 
-          scrollProgress={scrollYProgress.get()}
-          className="w-full h-full"
-        />
+        <div className="w-full h-full bg-gradient-to-br from-background via-background/80 to-background/60" />
       </motion.div>
 
       {/* Gradient Overlays */}
