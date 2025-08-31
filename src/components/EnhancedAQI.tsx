@@ -31,7 +31,7 @@ const EnhancedAQI = () => {
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
   
   const [aqiData] = useState<AQIData>({
-    city: 'New Delhi',
+    city: 'Bengaluru',
     aqi: 187,
     pm25: 94,
     pm10: 158,
@@ -182,7 +182,7 @@ const EnhancedAQI = () => {
             Breathe Aware 🌬️
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Real-time pollution data and personalized health guidance for your community
+            Real-time pollution data and personalized health guidance for Bengaluru
           </p>
         </motion.div>
 

@@ -26,9 +26,9 @@ const ImmersiveHero = () => {
     restDelta: 0.001
   });
 
-  const y = useTransform(scrollProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollProgress, [0, 0.5, 1], [1, 0.8, 0]);
-  const scale = useTransform(scrollProgress, [0, 1], [1, 1.2]);
+  const y = useTransform(scrollProgress, [0, 1], ['0%', '30%']);
+  const opacity = useTransform(scrollProgress, [0, 0.3, 1], [1, 0.9, 0.3]);
+  const scale = useTransform(scrollProgress, [0, 1], [1, 0.8]);
 
   const [currentStep, setCurrentStep] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
@@ -171,7 +171,7 @@ const ImmersiveHero = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              Transform dust pollution into living air purifiers.{' '}
+              Transform Bengaluru's dust pollution into living air purifiers.{' '}
               <span className="text-primary font-semibold">One community at a time.</span>
             </motion.p>
           </motion.div>

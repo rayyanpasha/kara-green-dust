@@ -7,11 +7,15 @@ import EnhancedHotspotMap from '@/components/EnhancedHotspotMap';
 import CivicComplaints from '@/components/CivicComplaints';
 import MossFrameStore from '@/components/MossFrameStore';
 import ImpactDashboard from '@/components/ImpactDashboard';
+import PersistentEarth from '@/components/PersistentEarth';
 import { MapPin, ShoppingBag, Sparkles, Wind } from 'lucide-react';
 
 const Index = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
+      {/* Persistent 3D Earth */}
+      <PersistentEarth />
+      
       {/* Immersive 3D Hero */}
       <ImmersiveHero />
       
@@ -61,7 +65,9 @@ const Index = () => {
             </Button>
           </div>
           <div className="mt-12 pt-8 border-t border-white/20 text-white/75">
-            <p>© 2024 Kara Environmental Movement • Transforming Pollution into Living Solutions</p>
+            <p>© 2024 Kara Environmental Movement • Bengaluru, India</p>
+            <p className="text-sm mt-2">Created by Rayyan Pasha & Kanishka Raghavendra</p>
+            <p className="text-xs mt-1 opacity-60">Transforming Pollution into Living Solutions</p>
           </div>
         </div>
       </footer>
