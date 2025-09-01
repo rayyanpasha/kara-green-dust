@@ -16,6 +16,7 @@ import FAQ from '@/components/FAQ';
 import Newsletter from '@/components/Newsletter';
 import SearchOverlay from '@/components/SearchOverlay';
 import { MapPin, ShoppingBag, Sparkles, Wind } from 'lucide-react';
+import { handleStartReporting, handleShopMossFrames } from '@/components/ActionHandlers';
 import dustToMossImage from '@/assets/dust-to-moss-transformation.jpg';
 import bengaluruCommunityImage from '@/assets/bengaluru-community-action.jpg';
 import hotspotVisualizationImage from '@/assets/interactive-hotspot-visualization.jpg';
@@ -123,12 +124,22 @@ const Index = () => {
             Join thousands creating cleaner air through community action and living solutions.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            <Button variant="hero" size="xl" className="glass-button">
+            <Button 
+              variant="hero" 
+              size="xl" 
+              className="glass-button"
+              onClick={handleStartReporting}
+            >
               <MapPin className="w-5 h-5" />
               Start Reporting
               <Sparkles className="w-4 h-4 ml-2" />
             </Button>
-            <Button variant="action" size="xl" className="glass-button">
+            <Button 
+              variant="action" 
+              size="xl" 
+              className="glass-button"
+              onClick={handleShopMossFrames}
+            >
               <ShoppingBag className="w-5 h-5" />
               Shop Moss Frames
               <Wind className="w-4 h-4 ml-2" />

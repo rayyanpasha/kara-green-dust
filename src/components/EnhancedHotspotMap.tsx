@@ -15,6 +15,7 @@ import {
   Zap,
   Target
 } from 'lucide-react';
+import { handleReportHotspot, handleJoinCleanup, handleSupportReport } from './ActionHandlers';
 
 interface Hotspot {
   id: string;
@@ -37,40 +38,66 @@ const EnhancedHotspotMap = () => {
   const [hotspots] = useState<Hotspot[]>([
     {
       id: '1',
-      location: 'Connaught Place Metro Station',
-      coordinates: [28.6315, 77.2167],
-      reports: 23,
+      location: 'MG Road Metro Station',
+      coordinates: [12.9716, 77.5946],
+      reports: 28,
       priority: 'high',
       status: 'cleaning',
-      description: 'Heavy dust accumulation near construction site affecting daily commuters',
-      dustCollected: '15.2kg',
-      reportedBy: 'Priya S.',
-      reportedAt: '2 hours ago',
-      upvotes: 47
+      description: 'Heavy dust accumulation from construction and high footfall area',
+      dustCollected: '18.7kg',
+      reportedBy: 'Sneha R.',
+      reportedAt: '1 hour ago',
+      upvotes: 52
     },
     {
       id: '2',
-      location: 'Karol Bagh Market Area',
-      coordinates: [28.6519, 77.1909],
-      reports: 18,
+      location: 'Whitefield Tech Park Area',
+      coordinates: [12.9698, 77.7500],
+      reports: 22,
       priority: 'high',
       status: 'verified',
-      description: 'Road dust from heavy traffic and poor street cleaning',
-      reportedBy: 'Arjun M.',
-      reportedAt: '5 hours ago',
-      upvotes: 32
+      description: 'Road dust from IT corridor traffic and ongoing infrastructure work',
+      reportedBy: 'Karthik M.',
+      reportedAt: '3 hours ago',
+      upvotes: 41
     },
     {
       id: '3',
-      location: 'Lajpat Nagar Central Market',
-      coordinates: [28.5678, 77.2436],
-      reports: 12,
+      location: 'Commercial Street Junction',
+      coordinates: [12.9833, 77.6078],
+      reports: 15,
       priority: 'medium',
       status: 'reported',
-      description: 'Dust from demolition work near popular shopping area',
-      reportedBy: 'Shreya K.',
-      reportedAt: '1 day ago',
-      upvotes: 28
+      description: 'Market area dust affecting shoppers and vendors',
+      reportedBy: 'Priya K.',
+      reportedAt: '6 hours ago',
+      upvotes: 35
+    },
+    {
+      id: '4',
+      location: 'Electronic City Gate',
+      coordinates: [12.8456, 77.6603],
+      reports: 19,
+      priority: 'high',
+      status: 'cleaning',
+      description: 'Industrial area dust from tech companies and construction',
+      dustCollected: '12.4kg',
+      reportedBy: 'Arjun S.',
+      reportedAt: '4 hours ago',
+      upvotes: 38
+    },
+    {
+      id: '5',
+      location: 'Koramangala 5th Block',
+      coordinates: [12.9352, 77.6245],
+      reports: 11,
+      priority: 'medium',
+      status: 'completed',
+      description: 'Residential area dust from road repairs - Successfully cleaned!',
+      dustCollected: '8.9kg',
+      reportedBy: 'Divya N.',
+      reportedAt: '2 days ago',
+      upvotes: 29
     }
   ]);
 
@@ -156,9 +183,14 @@ const EnhancedHotspotMap = () => {
                 <div className="flex items-center justify-between">
                   <CardTitle className="flex items-center gap-2">
                     <MapPin className="w-5 h-5 text-primary" />
-                    Live Delhi Hotspot Map
+                    Live Bengaluru Hotspot Map
                   </CardTitle>
-                  <Button variant="report" size="sm" className="glass-button">
+                  <Button 
+                    variant="report" 
+                    size="sm" 
+                    className="glass-button"
+                    onClick={handleReportHotspot}
+                  >
                     <Plus className="w-4 h-4" />
                     Report Hotspot
                   </Button>
@@ -339,7 +371,12 @@ const EnhancedHotspotMap = () => {
                           <ThumbsUp className="w-4 h-4" />
                           {selectedHotspot.upvotes}
                         </Button>
-                        <Button variant="eco" size="sm" className="flex-1 glass-button">
+                        <Button 
+                          variant="eco" 
+                          size="sm" 
+                          className="flex-1 glass-button"
+                          onClick={() => handleSupportReport(selectedHotspot.location)}
+                        >
                           Support Report
                         </Button>
                       </div>
@@ -360,8 +397,8 @@ const EnhancedHotspotMap = () => {
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { value: '61', label: 'Total Hotspots', color: 'text-primary' },
-                    { value: '23', label: 'Completed', color: 'text-success' }
+                    { value: '47', label: 'Active Hotspots', color: 'text-primary' },
+                    { value: '18', label: 'Completed', color: 'text-success' }
                   ].map((stat, index) => (
                     <motion.div
                       key={index}
@@ -378,8 +415,8 @@ const EnhancedHotspotMap = () => {
                 </div>
                 
                 <div className="text-center p-3 glass-panel rounded-lg">
-                  <div className="text-xl font-bold text-accent">127.3kg</div>
-                  <div className="text-xs text-muted-foreground">Total Dust Collected This Month</div>
+                  <div className="text-xl font-bold text-accent">89.2kg</div>
+                  <div className="text-xs text-muted-foreground">Dust Collected in Bengaluru This Month</div>
                 </div>
               </CardContent>
             </Card>
@@ -387,11 +424,19 @@ const EnhancedHotspotMap = () => {
             {/* Quick Actions */}
             <Card className="glass-card border-0 hover-lift">
               <CardContent className="pt-6 space-y-3">
-                <Button variant="report" className="w-full glass-button">
+                <Button 
+                  variant="report" 
+                  className="w-full glass-button"
+                  onClick={handleReportHotspot}
+                >
                   <Plus className="w-4 h-4" />
                   Report New Hotspot
                 </Button>
-                <Button variant="eco" className="w-full glass-button">
+                <Button 
+                  variant="eco" 
+                  className="w-full glass-button"
+                  onClick={handleJoinCleanup}
+                >
                   <Users className="w-4 h-4" />
                   Join Cleanup Team
                 </Button>

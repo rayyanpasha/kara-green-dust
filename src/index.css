@@ -6,35 +6,35 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors - Environmental & Youth-Focused */
-    --background: 120 20% 98%;
-    --foreground: 156 24% 12%;
+    /* Core Brand Colors - Olive Brown Earth Tones */
+    --background: 45 15% 92%;
+    --foreground: 45 25% 15%;
 
-    --card: 120 30% 99%;
-    --card-foreground: 156 24% 12%;
+    --card: 45 20% 95%;
+    --card-foreground: 45 25% 15%;
 
-    --popover: 120 30% 99%;
-    --popover-foreground: 156 24% 12%;
+    --popover: 45 20% 95%;
+    --popover-foreground: 45 25% 15%;
 
-    /* Primary: Deep Forest Green - Trust & Environmental Focus */
-    --primary: 156 48% 24%;
-    --primary-foreground: 120 30% 98%;
-    --primary-light: 156 48% 35%;
-    --primary-glow: 156 60% 45%;
+    /* Primary: Deep Olive Green - Environmental Focus */
+    --primary: 85 35% 28%;
+    --primary-foreground: 45 20% 95%;
+    --primary-light: 85 35% 38%;
+    --primary-glow: 85 45% 48%;
 
-    /* Secondary: Vibrant Moss Green - Growth & Youth Energy */
-    --secondary: 108 65% 35%;
-    --secondary-foreground: 120 30% 98%;
-    --secondary-light: 108 65% 45%;
+    /* Secondary: Warm Brown - Earth Connection */
+    --secondary: 35 45% 35%;
+    --secondary-foreground: 45 20% 95%;
+    --secondary-light: 35 45% 45%;
 
-    /* Accent: Warm Amber - Action & Urgency */
-    --accent: 35 85% 55%;
-    --accent-foreground: 120 30% 98%;
-    --accent-light: 35 85% 65%;
+    /* Accent: Rich Amber - Action & Energy */
+    --accent: 42 75% 55%;
+    --accent-foreground: 45 20% 95%;
+    --accent-light: 42 75% 65%;
 
     /* Muted & Supporting Colors */
-    --muted: 120 20% 94%;
-    --muted-foreground: 156 16% 46%;
+    --muted: 45 15% 88%;
+    --muted-foreground: 45 20% 45%;
 
     /* Status Colors */
     --success: 142 70% 45%;
@@ -50,16 +50,16 @@
     --ring: 156 48% 35%;
     --radius: 0.75rem;
 
-    /* Premium Organic Gradients */
+    /* Premium Earth-Toned Gradients */
     --gradient-hero: radial-gradient(ellipse at 30% 20%, hsl(var(--secondary-light)) 0%, hsl(var(--primary)) 30%, hsl(var(--accent)) 70%);
     --gradient-earth: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--primary-glow)) 40%, hsl(var(--accent-light)) 100%);
-    --gradient-sky: linear-gradient(180deg, hsl(108 65% 90%) 0%, hsl(var(--secondary-light)) 50%, hsl(var(--primary)) 100%);
+    --gradient-sky: linear-gradient(180deg, hsl(45 25% 85%) 0%, hsl(var(--secondary-light)) 50%, hsl(var(--primary)) 100%);
     --gradient-action: conic-gradient(from 45deg, hsl(var(--accent)) 0%, hsl(var(--accent-light)) 50%, hsl(var(--secondary)) 100%);
-    --gradient-glass-primary: linear-gradient(135deg, hsla(var(--primary), 0.15) 0%, hsla(var(--secondary), 0.25) 100%);
-    --gradient-glass-secondary: linear-gradient(135deg, hsla(var(--background), 0.8) 0%, hsla(var(--background), 0.4) 100%);
-    --gradient-mesh: radial-gradient(circle at 20% 80%, hsla(var(--accent), 0.3) 0%, transparent 50%), 
-                     radial-gradient(circle at 80% 20%, hsla(var(--secondary), 0.3) 0%, transparent 50%),
-                     radial-gradient(circle at 40% 40%, hsla(var(--primary-glow), 0.2) 0%, transparent 50%);
+    --gradient-glass-primary: linear-gradient(135deg, hsla(var(--primary), 0.25) 0%, hsla(var(--secondary), 0.35) 100%);
+    --gradient-glass-secondary: linear-gradient(135deg, hsla(var(--background), 0.9) 0%, hsla(var(--background), 0.6) 100%);
+    --gradient-mesh: radial-gradient(circle at 20% 80%, hsla(var(--accent), 0.4) 0%, transparent 50%), 
+                     radial-gradient(circle at 80% 20%, hsla(var(--secondary), 0.4) 0%, transparent 50%),
+                     radial-gradient(circle at 40% 40%, hsla(var(--primary-glow), 0.3) 0%, transparent 50%);
     
     /* Premium Glass Shadows */
     --shadow-glass: 0 8px 32px hsla(var(--primary), 0.12), 0 4px 16px hsla(var(--primary), 0.08);

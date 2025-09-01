@@ -6,12 +6,12 @@ const PersistentEarth = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   
-  // Transform properties based on scroll - Apple-style smooth transitions
-  const earthScale = useTransform(scrollYProgress, [0, 0.15, 0.4, 0.7, 1], [1, 0.6, 0.4, 0.3, 0.25]);
-  const earthX = useTransform(scrollYProgress, [0, 0.15, 0.4, 1], ['0%', '40%', '65%', '75%']);
-  const earthY = useTransform(scrollYProgress, [0, 0.15, 0.4, 1], ['0%', '10%', '15%', '20%']);
-  const earthOpacity = useTransform(scrollYProgress, [0, 0.1, 0.6, 0.9, 1], [1, 0.9, 0.7, 0.5, 0.3]);
-  const earthRotation = useTransform(scrollYProgress, [0, 1], [0, 360]);
+  // Transform properties based on scroll - Smooth progressive transitions
+  const earthScale = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1, 0.7, 0.5, 0.35, 0.25]);
+  const earthX = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], ['0%', '35%', '60%', '75%', '80%']);
+  const earthY = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], ['0%', '8%', '12%', '18%', '22%']);
+  const earthOpacity = useTransform(scrollYProgress, [0, 0.15, 0.7, 0.95, 1], [1, 0.95, 0.8, 0.4, 0.2]);
+  const earthRotation = useTransform(scrollYProgress, [0, 1], [0, 180]);
 
   return (
     <motion.div
@@ -26,8 +26,9 @@ const PersistentEarth = () => {
       }}
       transition={{
         type: "spring",
-        stiffness: 400,
-        damping: 40
+        stiffness: 300,
+        damping: 30,
+        mass: 0.8
       }}
     >
       <div className="w-full h-full">
