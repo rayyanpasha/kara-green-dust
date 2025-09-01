@@ -15,6 +15,7 @@ import OnboardingTour from '@/components/OnboardingTour';
 import FAQ from '@/components/FAQ';
 import Newsletter from '@/components/Newsletter';
 import SearchOverlay from '@/components/SearchOverlay';
+import FoundersSection from '@/components/FoundersSection';
 import { MapPin, ShoppingBag, Sparkles, Wind } from 'lucide-react';
 import { handleStartReporting, handleShopMossFrames } from '@/components/ActionHandlers';
 import dustToMossImage from '@/assets/dust-to-moss-transformation.jpg';
@@ -89,12 +90,17 @@ const Index = () => {
             </div>
           </InteractiveSection>
           
-          {/* Moss Frame Marketplace - Premium */}
+          {/* Moss Solutions Marketplace - Premium */}
           <InteractiveSection 
             className="py-16 bg-gradient-to-br from-secondary/5 to-primary/10"
             parallaxIntensity={0.3}
           >
             <MossFrameStore />
+          </InteractiveSection>
+          
+          {/* Founders Section */}
+          <InteractiveSection parallaxIntensity={0.2}>
+            <FoundersSection />
           </InteractiveSection>
           
           {/* FAQ Section */}

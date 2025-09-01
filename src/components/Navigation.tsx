@@ -14,6 +14,7 @@ import {
   Bell,
   User
 } from 'lucide-react';
+import karaLogo from '@/assets/kara-logo.png';
 
 interface NavigationProps {
   onSearchOpen?: () => void;
@@ -78,12 +79,10 @@ const Navigation = ({ onSearchOpen }: NavigationProps = {}) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <Leaf className="w-6 h-6 text-white" />
-            </div>
+            <img src={karaLogo} alt="KARA" className="w-10 h-10" />
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Kara
+                KARA
               </h1>
               <p className="text-xs text-muted-foreground -mt-1">Environmental Movement</p>
             </div>
