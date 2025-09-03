@@ -3,6 +3,7 @@ import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { toast } from 'sonner';
 import { 
   Wind, 
   AlertTriangle, 
@@ -144,6 +145,7 @@ const EnhancedAQI = () => {
   return (
     <section 
       ref={sectionRef}
+      data-section="aqi"
       className="py-24 px-6 relative overflow-hidden"
     >
       {/* Animated Background */}
@@ -317,7 +319,19 @@ const EnhancedAQI = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.6 }}
                 >
-                  <Button variant="eco" className="w-full mt-6 glass-button">
+                  <Button 
+                    variant="eco" 
+                    className="w-full mt-6 glass-button"
+                    onClick={() => {
+                      toast.success("🌍 Air quality report initiated!", {
+                        description: "Your report helps the community stay informed"
+                      });
+                      setTimeout(() => {
+                        const hotspotSection = document.querySelector('[data-section="hotspots"]');
+                        hotspotSection?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }, 500);
+                    }}
+                  >
                     <MapPin className="w-4 h-4" />
                     Report Air Quality Issue
                   </Button>

@@ -129,6 +129,7 @@ const EnhancedHotspotMap = () => {
   return (
     <section 
       ref={sectionRef}
+      data-section="hotspots"
       className="py-24 px-6 relative overflow-hidden bg-gradient-to-br from-background via-muted/10 to-secondary/5"
     >
       {/* Animated Background */}

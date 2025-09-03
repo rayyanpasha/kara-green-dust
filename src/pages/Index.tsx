@@ -16,6 +16,7 @@ import FAQ from '@/components/FAQ';
 import Newsletter from '@/components/Newsletter';
 import SearchOverlay from '@/components/SearchOverlay';
 import FoundersSection from '@/components/FoundersSection';
+import SectionNavigator from '@/components/SectionNavigator';
 import { MapPin, ShoppingBag, Sparkles, Wind } from 'lucide-react';
 import { handleStartReporting, handleShopMossFrames } from '@/components/ActionHandlers';
 import dustToMossImage from '@/assets/dust-to-moss-transformation.jpg';
@@ -57,7 +58,9 @@ const Index = () => {
         <PersistentEarth />
         
         {/* Immersive 3D Hero */}
-        <ImmersiveHero />
+        <div data-section="hero">
+          <ImmersiveHero />
+        </div>
         
         {/* Enhanced AQI with Motion */}
         <InteractiveSection 
@@ -95,12 +98,16 @@ const Index = () => {
             className="py-16 bg-gradient-to-br from-secondary/5 to-primary/10"
             parallaxIntensity={0.3}
           >
-            <MossFrameStore />
+            <div data-section="marketplace">
+              <MossFrameStore />
+            </div>
           </InteractiveSection>
           
           {/* Founders Section */}
           <InteractiveSection parallaxIntensity={0.2}>
-            <FoundersSection />
+            <div data-section="founders">
+              <FoundersSection />
+            </div>
           </InteractiveSection>
           
           {/* FAQ Section */}
@@ -113,6 +120,9 @@ const Index = () => {
             <Newsletter />
           </InteractiveSection>
         </div>
+        
+        {/* Section Navigator */}
+        <SectionNavigator />
         
         {/* Premium Footer */}
         <InteractiveSection 

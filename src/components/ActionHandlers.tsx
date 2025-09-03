@@ -44,15 +44,21 @@ export const handleShopMossFrames = () => {
 };
 
 export const handleStartReporting = () => {
-  toast.success("📊 AQI Reporting Portal", {
-    description: "Starting community air quality monitoring..."
+  toast.success("🌍 Starting AQI reporting...", {
+    description: "Set up your location for personalized air quality monitoring"
   });
   
   setTimeout(() => {
-    toast.info("🎯 Location Services", {
-      description: "Detecting your area for personalized AQI data."
+    toast.info("📍 Location access required", {
+      description: "Please enable location services for accurate readings"
     });
   }, 1500);
+  
+  // Smooth scroll to AQI section
+  setTimeout(() => {
+    const aqiSection = document.querySelector('[data-section="aqi"]');
+    aqiSection?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 500);
 };
 
 export const handleNewsletterSignup = (email: string) => {
